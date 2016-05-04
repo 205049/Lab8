@@ -55,10 +55,12 @@ public class MetroDeParisController {
 	    	List<Fermata> cammino = model.getCammino(s1, s2);
 	    	txtResult.appendText("Percorso:\n");
 	    	
+	    	cammino.remove(model.nomeFermata(s1));
+	    	cammino.remove(model.nomeFermata(s2));
 	    	for(Fermata temp: cammino)
 	    		txtResult.appendText("" + temp.getNome() + "\n");
 	    	
-	    	txtResult.appendText("\n\nTempo di percorrenza stimato: " );
+	    	txtResult.appendText("\n\nTempo di percorrenza stimato: " + model.getTempo() + " minuti");
     	}
     }
 

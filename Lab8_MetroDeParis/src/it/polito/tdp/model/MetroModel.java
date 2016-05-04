@@ -22,6 +22,7 @@ import it.polito.tdp.db.MetroDAO;
 public class MetroModel {
 
 	private WeightedGraph<Fermata, DefaultWeightedEdge> grafo;
+	private double tempo = 0;
 
 	public List<Fermata> elencoFermate() {
 		MetroDAO dao = new MetroDAO();
@@ -104,12 +105,16 @@ public class MetroModel {
 		if(path == null)
 			return null;
 		
-		double tempo = path.getWeight();
+		tempo = path.getWeight();
 		System.out.println(tempo*60);
 		
 		System.out.println(Graphs.getPathVertexList(path));
 		return Graphs.getPathVertexList(path);
 		
+	}
+	
+	public double getTempo(){
+		return tempo*60;
 	}
 	
 	public Fermata nomeFermata(String nome) {
