@@ -1,5 +1,6 @@
 package it.polito.tdp.metrodeparis;
 	
+import it.polito.tdp.model.MetroModel;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -12,10 +13,16 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("MetroDeParis.fxml"));
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			MetroModel model = new MetroModel();
+			MetroDeParisController controller = new MetroDeParisController();
+			
+			controller.setModel(model);
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
